@@ -8,9 +8,10 @@ const SectionHistoryTeam = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p className="mb-4 text-justify">
-              El Federal Futbol Club, también conocido como 'El F,' fue fundado
-              en 2017 por un grupo de amigos provenientes mayoritariamente de la
-              ciudad de Federal - Entre Ríos.
+              El Federal Futbol Club, también conocido como
+              <strong> El F</strong>, fue fundado en 2017 por un grupo de amigos
+              provenientes mayoritariamente de la ciudad de Federal - Entre
+              Ríos.
             </p>
             <p className="mb-4 text-justify">
               En su primer año, El F compitió en la categoría B del torneo de la

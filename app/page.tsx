@@ -15,7 +15,7 @@ const HomePage = () => {
         <SectionPrincipal />
         <SectionNextMatch />
         <SectionHistoryTeam />
-        {/*<SectionLegendaryPlayers />*/}
+        <SectionLegendaryPlayers />
         <SectionChampionships />
         <SectionSponsors />
         <SectionSocialNetworks />

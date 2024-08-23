@@ -5,7 +5,7 @@ const sponsors = [
   },
   {
     name: "VIVA LA MAÑANA",
-    logo: "/img/sponsors/viva-la-mañana.jpeg?height=100&width=100",
+    logo: "/img/sponsors/viva-la-maniana.jpeg?height=100&width=100",
   },
   {
     name: "LG POLLERIA",

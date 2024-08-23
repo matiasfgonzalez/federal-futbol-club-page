@@ -9,7 +9,7 @@ const nextMatch = {
   date: "24 de Agosto, 2024",
   time: "14:30 PM",
   venue: "Cancha de UNER - Oro Verde",
-  opponentLogo: "/img/team-rand-sin-fondo.png?height=120&width=120",
+  opponentLogo: "img/escudos/evasores.png?height=120&width=120",
 };
 
 const SectionNextMatch = () => {
@@ -32,7 +32,7 @@ const SectionNextMatch = () => {
                 <img
                   src={nextMatch.opponentLogo}
                   alt={nextMatch.opponent}
-                  className="w-16 h-16 md:w-24 md:h-24 object-contain"
+                  className="w-24 h-24 md:w-32 md:h-32 object-contain"
                 />
               </div>
               <div className="text-center md:text-right">

@@ -10,7 +10,7 @@ const SectionPrincipal = () => {
           </h1>
           <p className="text-xl mb-6">Mas que un equipo</p>
           <Button className="bg-[#2348a7] hover:bg-[#ffffff] hover:text-[#1b2f62]">
-            Próximamente ...
+            Próximamente...
           </Button>
         </div>
         <div className="md:w-1/2">

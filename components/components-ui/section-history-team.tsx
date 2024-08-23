@@ -7,13 +7,26 @@ const SectionHistoryTeam = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <p className="mb-4">
-              El Federal Futbol Club, también conocido como El F, fue fundado en
-              2019 por un grupo de amigos.
+            <p className="mb-4 text-justify">
+              El Federal Futbol Club, también conocido como "El F," fue fundado
+              en 2017 por un grupo de amigos provenientes mayoritariamente de la
+              ciudad de Federal - Entre Ríos.
             </p>
-            <p className="mb-4">
-              A lo largo de su historia, el equipo se ha convertido en uno de
-              los equipos más competitivos y reconocidos de Oro Verde.
+            <p className="mb-4 text-justify">
+              En su primer año, El F compitió en la categoría B del torneo de la
+              Universidad Nacional de Entre Ríos (UNER). A pesar de ser un
+              equipo recién formado destacar rápidamente. Al final de la
+              temporada, lograron coronarse campeones de la categoría B, un
+              logro que les aseguró el ascenso a la categoría A del torneo de
+              UNER.
+            </p>
+            <p className="mb-4 text-justify">
+              Desde entonces, El Federal Futbol Club ha mantenido su lugar en la
+              categoría A, enfrentando a los equipos que han participado del
+              torneo. Cada temporada ha sido un desafío, pero El F ha demostrado
+              ser un equipo resiliente, manteniéndose competitivo y
+              consolidándose como uno de los equipos más reconocidos y
+              respetados del torneo de UNER.
             </p>
           </div>
           <div>

@@ -30,7 +30,7 @@ const NavLinks = () => (
     </li>
     <li>
       <a href="#trophies" className="hover:text-white transition duration-300">
-        Trofeos
+        Campeonatos
       </a>
     </li>
     <li>

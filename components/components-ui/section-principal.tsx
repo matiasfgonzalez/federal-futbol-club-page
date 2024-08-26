@@ -15,7 +15,7 @@ const SectionPrincipal = () => {
         </div>
         <div className="md:w-1/2">
           <img
-            src="/img/equipo-titular-jugador.jpeg?height=400&width=600"
+            src="/img/equipo-titular-jugador.webp?height=400&width=600"
             alt="Camp Nou"
             className="rounded-lg shadow-lg w-full"
           />

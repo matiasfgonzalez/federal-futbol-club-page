@@ -3,13 +3,14 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
 import { Calendar, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const nextMatch = {
-  opponent: "Evasores",
-  date: "24 de Agosto, 2024",
-  time: "14:30 PM",
+  opponent: "********",
+  date: "31 de Agosto, 2024",
+  time: "--:-- PM",
   venue: "Cancha de UNER - Oro Verde",
-  opponentLogo: "img/escudos/evasores.png?height=120&width=120",
+  opponentLogo: "",
 };
 
 const SectionNextMatch = () => {
@@ -22,18 +23,20 @@ const SectionNextMatch = () => {
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="flex items-center mb-4 md:mb-0">
                 <img
-                  src="/img/escudo-federal-futbol-club-sin-fondo.png?height=120&width=120"
+                  src="/img/escudo-federal-futbol-club-sin-fondo.webp?height=120&width=120"
                   alt="Federal Futbol Club"
                   className="w-16 h-16 md:w-24 md:h-24 object-contain"
                 />
                 <span className="text-2xl md:text-3xl font-bold mx-2 md:mx-4">
                   VS
                 </span>
-                <img
-                  src={nextMatch.opponentLogo}
-                  alt={nextMatch.opponent}
-                  className="w-24 h-24 md:w-32 md:h-32 object-contain"
-                />
+                {nextMatch.opponentLogo && (
+                  <img
+                    src={nextMatch.opponentLogo}
+                    alt={nextMatch.opponent}
+                    className="w-24 h-24 md:w-32 md:h-32 object-contain"
+                  />
+                )}
               </div>
               <div className="text-center md:text-right">
                 <h3 className="text-lg md:text-xl font-semibold mb-2">{`Federal Futbol Club vs ${nextMatch.opponent}`}</h3>
@@ -58,25 +61,24 @@ const SectionNextMatch = () => {
                 Ver Listado de Buena Fe
               </Button>
             </DialogTrigger>
-            {/*<DialogContent className="max-w-[95vw] w-full max-h-[90vh] p-0 overflow-hidden">
-          <div className="overflow-auto h-full w-full">
-            <img
-              src="/img/lista-buena-fe.jpeg"
-              alt="Listado de Buena Fe"
-              className="w-full h-auto"
-            />
-          </div>
-        </DialogContent>*/}
             <DialogContent className="max-w-[95vw] w-full max-h-[90vh] p-0 overflow-hidden">
               <div className="overflow-auto max-h-[90vh] w-full">
                 <img
-                  src="/img/lista-buena-fe.jpeg"
+                  src="/img/lista-buena-fe.webp"
                   alt="Listado de Buena Fe"
                   className="w-full h-auto"
                 />
               </div>
             </DialogContent>
           </Dialog>
+        </div>
+        <div className="text-center pt-2">
+          <Button
+            variant="outline"
+            className="bg-[#2348a7] text-white hover:bg-[#1b2f62]"
+          >
+            <Link href="/fecha-1">VER FECHA 1</Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -46,7 +46,7 @@ const HeaderComponent = () => {
     <header className="bg-[#2348a7] py-4 relative z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <img
-          src="/img/escudo-federal-futbol-club-sin-fondo.png?height=50&width=50"
+          src="/img/escudo-federal-futbol-club-sin-fondo.webp?height=50&width=50"
           alt="Federal FC"
           className="h-12"
         />

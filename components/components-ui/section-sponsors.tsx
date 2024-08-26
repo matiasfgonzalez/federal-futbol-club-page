@@ -5,19 +5,19 @@ const sponsors = [
   },
   {
     name: "VIVA LA MAÑANA",
-    logo: "/img/sponsors/viva-la-maniana.jpeg?height=100&width=100",
+    logo: "/img/sponsors/viva-la-maniana.webp?height=100&width=100",
   },
   {
     name: "LG POLLERIA",
-    logo: "/img/sponsors/polleria-lg.jpeg?height=100&width=100",
+    logo: "/img/sponsors/polleria-lg.webp?height=100&width=100",
   },
   {
     name: "VIVERO ORO VERDE",
-    logo: "/img/sponsors/vivero-oro-verde.jpeg?height=100&width=100",
+    logo: "/img/sponsors/vivero-oro-verde.webp?height=100&width=100",
   },
   {
     name: "JM - DECO MUEBLES",
-    logo: "/img/sponsors/jm-deco-muebles.jpeg?height=100&width=100",
+    logo: "/img/sponsors/jm-deco-muebles.webp?height=100&width=100",
   },
 ];
 

@@ -32,7 +32,7 @@ const SectionHistoryTeam = () => {
           </div>
           <div>
             <img
-              src="/img/historia.jpeg?height=300&width=500"
+              src="/img/historia.webp?height=300&width=500"
               alt="Fundación del Federal Futbol Club"
               className="rounded-lg shadow-lg w-full"
             />

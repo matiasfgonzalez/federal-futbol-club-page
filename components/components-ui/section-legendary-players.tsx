@@ -6,27 +6,27 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const players = [
   {
     name: "Diego Steimbrecher",
-    image: "/img/leyendas/leyenda-02.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-02.webp?height=400&width=300",
   },
   {
     name: "Fernando Goette",
-    image: "/img/leyendas/leyenda-01.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-01.webp?height=400&width=300",
   },
   {
     name: "Eduardo Teze",
-    image: "/img/leyendas/leyenda-03.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-03.webp?height=400&width=300",
   },
   {
     name: "Los Palomos",
-    image: "/img/leyendas/leyenda-04.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-04.webp?height=400&width=300",
   },
   {
     name: "Emanuel Molina",
-    image: "/img/leyendas/leyenda-05.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-05.webp?height=400&width=300",
   },
   {
     name: "Manuel Krafft",
-    image: "/img/leyendas/leyenda-06.jpeg?height=400&width=300",
+    image: "/img/leyendas/leyenda-06.webp?height=400&width=300",
   },
 ];
 

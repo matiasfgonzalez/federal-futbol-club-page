@@ -51,7 +51,7 @@ const SectionSocialNetworks = () => {
               href="https://www.instagram.com/federal_futbol/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center"
+              className="flex items-center text-pink-600 hover:text-pink-800"
             >
               <Instagram />
               <span className="sr-only">Instagram</span>

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Select,
   SelectTrigger,
@@ -9,13 +9,27 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
+enum Fechas {
+  fecha1 = "fecha-1",
+  fecha2 = "fecha-2",
+}
+
 const HeaderNavFechas = () => {
-  const [selectedDate, setSelectedDate] = useState("fecha-1");
   const router = useRouter();
+  let pathname = usePathname();
+  pathname = pathname.slice(1);
+
+  const select = Object.values(Fechas).includes(pathname as Fechas)
+    ? pathname
+    : "fecha";
+
+  const [selectedDate, setSelectedDate] = useState(select);
 
   const handleDateChange = (value: string) => {
-    setSelectedDate(value);
-    router.push(`/${value}`);
+    if (value != "fecha") {
+      setSelectedDate(value);
+      router.push(`/${value}`);
+    }
   };
 
   return (
@@ -37,7 +51,15 @@ const HeaderNavFechas = () => {
               <SelectValue placeholder="Seleccionar fecha" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="fecha-1">Fecha 1</SelectItem>
+              <SelectItem value="fecha">Seleccione una opción</SelectItem>
+              {Object.entries(Fechas).map(([key, value]) => (
+                <SelectItem key={key} value={value}>
+                  {key
+                    .replace(/([a-z])([A-Z])/g, "$1 $2")
+                    .replace(/fecha/, "Fecha ")}{" "}
+                  {/* Esto es opcional para transformar "fecha1" a "Fecha 1" */}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </nav>

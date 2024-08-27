@@ -6,11 +6,11 @@ import { Calendar, MapPin } from "lucide-react";
 import Link from "next/link";
 
 const nextMatch = {
-  opponent: "********",
+  opponent: "Saca Clavo",
   date: "31 de Agosto, 2024",
-  time: "--:-- PM",
+  time: "10:00 AM",
   venue: "Cancha de UNER - Oro Verde",
-  opponentLogo: "",
+  opponentLogo: "/img/escudos/saca-clavo.webp",
 };
 
 const SectionNextMatch = () => {
@@ -72,12 +72,20 @@ const SectionNextMatch = () => {
             </DialogContent>
           </Dialog>
         </div>
+        {/*<div className="text-center pt-2">
+          <Button
+            variant="outline"
+            className="bg-[#2348a7] text-white hover:bg-[#1b2f62]"
+          >
+            <Link href="/players">JUGADORES</Link>
+          </Button>
+        </div>*/}
         <div className="text-center pt-2">
           <Button
             variant="outline"
             className="bg-[#2348a7] text-white hover:bg-[#1b2f62]"
           >
-            <Link href="/fecha-1">VER FECHA 1</Link>
+            <Link href="/fecha-2">VER FECHA 2</Link>
           </Button>
         </div>
       </div>

@@ -6,7 +6,7 @@ import Twitter from "@/public/svg/twitter";
 
 const SectionSocialNetworks = () => {
   return (
-    <section id="social-media" className="bg-[#2348a7] py-12">
+    <section id="social-media" className="bg-[#1b2f62] py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">
           Síguenos en Redes Sociales

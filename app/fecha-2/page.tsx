@@ -23,13 +23,13 @@ import {
   ITeam,
 } from "@/interfaces/inteface";
 import { leagueTable } from "@/data/leagueTable";
-import { matchResults } from "@/data/match-results/fecha1";
+import { matchResults } from "@/data/match-results/fecha2";
 import { compareTeams } from "@/functions/compare-teams";
 
 leagueTable.zoneA.sort(compareTeams);
 leagueTable.zoneB.sort(compareTeams);
 
-const FechaUno = () => {
+const FechaDos = () => {
   const ResultsSection = ({ zoneResults, zoneName }: IResultsSection) => (
     <div className="mb-8">
       <h2 className="text-2xl font-bold text-center text-[#1b2f62] mb-4">
@@ -181,4 +181,4 @@ const FechaUno = () => {
   );
 };
 
-export default FechaUno;
+export default FechaDos;

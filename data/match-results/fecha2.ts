@@ -26,11 +26,10 @@ export const matchResults: IMatchResults = {
   ],
   zoneB: [
     {
-      homeTeam: "Federal",
-      homeTeamLogo:
-        "/img/escudo-federal-futbol-club-sin-fondo.webp?height=40&width=40",
-      awayTeam: "Saca Clavo",
-      awayTeamLogo: "/img/escudos/saca-clavo.webp?height=40&width=40",
+      homeTeam: "Ñandubay",
+      homeTeamLogo: "/img/escudos/nandubay.webp?height=40&width=40",
+      awayTeam: "LSF",
+      awayTeamLogo: "/img/escudos/lsf.webp?height=40&width=40",
       score: "10:00 hs",
     },
     {
@@ -41,10 +40,11 @@ export const matchResults: IMatchResults = {
       score: "13:00 hs",
     },
     {
-      homeTeam: "Ñandubay",
-      homeTeamLogo: "/img/escudos/nandubay.webp?height=40&width=40",
-      awayTeam: "LSF",
-      awayTeamLogo: "/img/escudos/lsf.webp?height=40&width=40",
+      homeTeam: "Federal",
+      homeTeamLogo:
+        "/img/escudo-federal-futbol-club-sin-fondo.webp?height=40&width=40",
+      awayTeam: "Saca Clavo",
+      awayTeamLogo: "/img/escudos/saca-clavo.webp?height=40&width=40",
       score: "14:00 hs",
     },
   ],

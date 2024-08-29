@@ -6,7 +6,7 @@ const SocialShare = () => {
   const currentUrl = "https://federal-futbol-club-page.pages.dev/"; // Obtiene la URL actual
 
   return (
-    <div className="flex space-x-4 justify-center bg-[#1b2f62]">
+    <div className="pt-3 flex space-x-4 justify-center bg-[#1b2f62]">
       <strong>Compartir</strong>
       {/* Botón de compartir en Facebook */}
       <a

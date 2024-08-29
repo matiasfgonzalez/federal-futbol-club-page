@@ -8,7 +8,7 @@ import Link from "next/link";
 const nextMatch = {
   opponent: "Saca Clavo",
   date: "31 de Agosto, 2024",
-  time: "10:00 AM",
+  time: "14:00 hs",
   venue: "Cancha de UNER - Oro Verde",
   opponentLogo: "/img/escudos/saca-clavo.webp",
 };

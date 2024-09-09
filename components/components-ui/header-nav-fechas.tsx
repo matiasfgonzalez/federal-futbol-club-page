@@ -12,6 +12,7 @@ import {
 enum Fechas {
   fecha1 = "fecha-1",
   fecha2 = "fecha-2",
+  fecha3 = "fecha-3",
 }
 
 const HeaderNavFechas = () => {

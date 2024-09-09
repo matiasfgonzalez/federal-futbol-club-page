@@ -8,7 +8,7 @@ const SectionPrincipal = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Federal Futbol Club
           </h1>
-          <p className="text-xl mb-6">Mas que un equipo</p>
+          <p className="text-xl mb-6">Más que un equipo</p>
           <Button className="bg-[#2348a7] hover:bg-[#ffffff] hover:text-[#1b2f62]">
             Próximamente...
           </Button>

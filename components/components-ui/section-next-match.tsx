@@ -8,7 +8,7 @@ import Link from "next/link";
 const nextMatch = {
   opponent: "Ñandubay",
   date: "14 de Septiembre, 2024",
-  time: "--:-- hs",
+  time: "13:30 hs",
   venue: "Cancha de UNER - Oro Verde",
   opponentLogo: "/img/escudos/nandubay.webp",
 };

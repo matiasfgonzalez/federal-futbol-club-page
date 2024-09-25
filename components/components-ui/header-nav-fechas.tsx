@@ -13,6 +13,7 @@ enum Fechas {
   fecha1 = "fecha-1",
   fecha2 = "fecha-2",
   fecha3 = "fecha-3",
+  fecha4 = "fecha-4",
 }
 
 const HeaderNavFechas = () => {

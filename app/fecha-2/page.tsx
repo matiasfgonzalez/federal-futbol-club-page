@@ -41,7 +41,9 @@ const FechaDos = () => {
             <CardContent className="p-4">
               <div className="flex justify-between items-center">
                 <div className="text-right flex-1 flex items-center justify-end">
-                  <p className="font-bold mr-2">{match.homeTeam}</p>
+                  <p className="font-bold mr-2 hidden min-[500px]:block">
+                    {match.homeTeam}
+                  </p>
                   <Image
                     src={match.homeTeamLogo}
                     alt={`${match.homeTeam} logo`}
@@ -59,7 +61,9 @@ const FechaDos = () => {
                     width={40}
                     height={40}
                   />
-                  <p className="font-bold ml-2">{match.awayTeam}</p>
+                  <p className="font-bold ml-2 hidden min-[500px]:block">
+                    {match.awayTeam}
+                  </p>
                 </div>
               </div>
             </CardContent>

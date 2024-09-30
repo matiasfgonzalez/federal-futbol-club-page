@@ -28,7 +28,7 @@ const SectionNextMatch = () => {
                   className="w-16 h-16 md:w-24 md:h-24 object-contain"
                 />
                 <span className="text-2xl md:text-3xl font-bold mx-2 md:mx-4">
-                  VS
+                  1 - 0
                 </span>
                 {nextMatch.opponentLogo && (
                   <img

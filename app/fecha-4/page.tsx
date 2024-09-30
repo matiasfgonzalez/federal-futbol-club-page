@@ -90,6 +90,7 @@ const FechaCuatro = () => {
               <TableHead className="text-white text-center">P</TableHead>
               <TableHead className="text-white text-center">GF</TableHead>
               <TableHead className="text-white text-center">GC</TableHead>
+              <TableHead className="text-white text-center">DF</TableHead>
               <TableHead className="text-white text-center">Pts</TableHead>
             </TableRow>
           </TableHeader>
@@ -116,6 +117,9 @@ const FechaCuatro = () => {
                 <TableCell className="text-center">{team.goalsFor}</TableCell>
                 <TableCell className="text-center">
                   {team.goalsAgainst}
+                </TableCell>
+                <TableCell className="text-center">
+                  {team.goalsFor - team.goalsAgainst}
                 </TableCell>
                 <TableCell className="text-center font-bold">
                   {team.points}

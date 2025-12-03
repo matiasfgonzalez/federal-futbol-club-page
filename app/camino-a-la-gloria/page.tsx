@@ -482,7 +482,7 @@ const CaminoGloriaPage = () => {
 
                   {/* Imagen del equipo */}
                   <img
-                    src="/img/equipo-titular-jugador.webp"
+                    src="/img/festejo-campeon.webp"
                     alt="Federal FC - Campeón Clausura UNER 2025"
                     className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -507,9 +507,9 @@ const CaminoGloriaPage = () => {
                 className="max-w-3xl mx-auto"
               >
                 <blockquote className="text-xl md:text-2xl text-white/80 italic font-light leading-relaxed mb-8">
-                  "Con sacrificio, unión y pasión, escribimos una página dorada
+                  Con sacrificio, unión y pasión, escribimos una página dorada
                   en nuestra historia. Este campeonato es de todos los que
-                  llevan el azul en el corazón."
+                  llevan el azul en el corazón.
                 </blockquote>
 
                 <div className="flex items-center justify-center gap-4">

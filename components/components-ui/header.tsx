@@ -113,27 +113,6 @@ const HeaderComponent = () => {
           <nav className="hidden lg:block">
             <ul className="flex items-center space-x-8">
               <NavLinks />
-              <li>
-                <Link
-                  href="/fecha-4"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1b2f62] font-bold px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/25 hover:-translate-y-0.5"
-                >
-                  <span>Ver Torneo</span>
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </Link>
-              </li>
             </ul>
           </nav>
 
@@ -207,30 +186,6 @@ const HeaderComponent = () => {
                     ))}
                   </ul>
                 </nav>
-
-                {/* Mobile CTA */}
-                <div className="pt-6 pb-4">
-                  <Link
-                    href="/fecha-4"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1b2f62] font-bold py-3 px-6 rounded-xl transition-all duration-300"
-                  >
-                    <span>Ver Torneo</span>
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </Link>
-                </div>
               </div>
             </SheetContent>
           </Sheet>

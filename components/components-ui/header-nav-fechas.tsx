@@ -107,35 +107,6 @@ const HeaderNavFechas = () => {
                 </span>
               </div>
             )}
-
-            {/* Fecha Selector */}
-            <div className="relative">
-              <Select value={selectedDate} onValueChange={handleDateChange}>
-                <SelectTrigger className="w-[160px] md:w-[180px] bg-white/10 hover:bg-white/20 border-white/20 text-white rounded-xl transition-all duration-300 focus:ring-2 focus:ring-amber-400/50">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-amber-400" />
-                    <SelectValue placeholder="Seleccionar fecha" />
-                  </div>
-                </SelectTrigger>
-                <SelectContent className="bg-[#1b2f62] border-white/20 rounded-xl overflow-hidden">
-                  <SelectItem
-                    value="fecha"
-                    className="text-white/70 focus:bg-white/10 focus:text-white"
-                  >
-                    Seleccionar fecha
-                  </SelectItem>
-                  {Object.entries(Fechas).map(([key, value]) => (
-                    <SelectItem
-                      key={key}
-                      value={value}
-                      className="text-white focus:bg-amber-400/20 focus:text-amber-400"
-                    >
-                      {getFechaLabel(value)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
           </nav>
         </div>
       </div>

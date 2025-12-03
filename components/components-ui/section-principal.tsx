@@ -37,10 +37,10 @@ const SectionPrincipal = () => {
           {/* Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 animate-fade-in-down">
-              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
-              <span className="text-sm font-medium text-white/90">
-                Torneo UNER 2024
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400/20 to-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full px-4 py-2 mb-6 animate-fade-in-down">
+              <span className="text-amber-400">🏆</span>
+              <span className="text-sm font-semibold text-amber-400">
+                Campeones Clausura UNER 2025
               </span>
             </div>
 
@@ -69,10 +69,11 @@ const SectionPrincipal = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <Link
-                href="/fecha-4"
+                href="/camino-a-la-gloria"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1b2f62] font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/25 hover:-translate-y-1"
               >
-                <span>Ver Torneo Actual</span>
+                <Trophy className="w-5 h-5" />
+                <span>Camino a la Gloria</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a

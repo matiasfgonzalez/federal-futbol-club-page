@@ -158,14 +158,6 @@ const SectionNextMatch = () => {
               </div>
             </DialogContent>
           </Dialog>
-
-          <Link href="/fecha-4">
-            <Button className="group bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1b2f62] font-bold px-6 py-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-amber-400/25 hover:-translate-y-0.5">
-              <Trophy className="w-5 h-5 mr-2" />
-              Ver Fecha 4 del Torneo
-              <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

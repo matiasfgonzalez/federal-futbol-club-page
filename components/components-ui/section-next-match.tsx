@@ -1,6 +1,12 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
   Calendar,
@@ -142,22 +148,49 @@ const SectionNextMatch = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="group bg-[#1b2f62] hover:bg-[#2348a7] text-white font-semibold px-6 py-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#1b2f62]/25 hover:-translate-y-0.5">
-                <FileText className="w-5 h-5 mr-2" />
+              <Button className="group bg-gradient-to-r from-[#1b2f62] to-[#2348a7] hover:from-[#2348a7] hover:to-[#1b2f62] text-white font-semibold px-8 py-6 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-[#1b2f62]/30 hover:-translate-y-1 border border-white/10">
+                <FileText className="w-5 h-5 mr-3" />
                 Ver Listado de Buena Fe
-                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[95vw] w-full max-h-[90vh] p-0 overflow-hidden rounded-2xl">
-              <div className="overflow-auto max-h-[90vh] w-full">
-                <img
-                  src="/img/lista-buena-fe.webp"
-                  alt="Listado de Buena Fe"
-                  className="w-full h-auto"
-                />
+            <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 overflow-hidden rounded-3xl border-0 bg-gradient-to-b from-[#1b2f62] to-[#152347] shadow-2xl">
+              {/* Dialog Header */}
+              <div className="bg-gradient-to-r from-[#1b2f62] via-[#2348a7] to-[#1b2f62] p-6 text-center border-b border-white/10">
+                <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 font-semibold px-4 py-2 rounded-full text-sm mb-3">
+                  <FileText className="w-4 h-4" />
+                  Documento Oficial
+                </div>
+                <DialogTitle className="text-2xl md:text-3xl font-bold text-white">
+                  Listado de <span className="text-amber-400">Buena Fe</span>
+                </DialogTitle>
+                <DialogDescription className="text-white/60 text-sm mt-2">
+                  Federal Futbol Club - Clausura UNER 2025
+                </DialogDescription>
+              </div>
+
+              {/* Dialog Content */}
+              <div className="overflow-auto max-h-[calc(90vh-120px)] w-full bg-white/5 p-4">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
+                  <img
+                    src="/img/lista-buena-fe.webp"
+                    alt="Listado de Buena Fe - Federal FC"
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
             </DialogContent>
           </Dialog>
+
+          {/* Link to Camino a la Gloria */}
+          <Link
+            href="/camino-a-la-gloria"
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-[#1b2f62] font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-amber-400/30 hover:-translate-y-1"
+          >
+            <Trophy className="w-5 h-5" />
+            Ver Camino a la Gloria
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

@@ -33,10 +33,19 @@ const championships = [
     year: "2024",
     title: "Cuartos de Final",
     subtitle: "Categoría A",
-    description: "Temporada competitiva en curso",
+    description: "Temporada competitiva",
     icon: Target,
     isChampion: false,
     color: "from-[#2348a7] to-[#3a5dc9]",
+  },
+  {
+    year: "2025",
+    title: "¡CAMPEÓN!",
+    subtitle: "Clausura UNER",
+    description: "Bicampeones históricos del torneo universitario",
+    icon: Trophy,
+    isChampion: true,
+    color: "from-amber-400 to-amber-500",
   },
 ];
 
@@ -77,7 +86,7 @@ const SectionChampionships = () => {
         </div>
 
         {/* Championships Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {championships.map((item, index) => (
             <div
               key={index}
@@ -132,9 +141,9 @@ const SectionChampionships = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-4xl md:text-5xl font-black text-amber-400 mb-2">
-                1
+                2
               </p>
-              <p className="text-white/70 text-sm">Campeonato</p>
+              <p className="text-white/70 text-sm">Campeonatos</p>
             </div>
             <div>
               <p className="text-4xl md:text-5xl font-black text-white mb-2">
@@ -144,7 +153,7 @@ const SectionChampionships = () => {
             </div>
             <div>
               <p className="text-4xl md:text-5xl font-black text-white mb-2">
-                7+
+                8
               </p>
               <p className="text-white/70 text-sm">Años de Historia</p>
             </div>

@@ -88,11 +88,20 @@ const HeaderNavFechas = () => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex items-center gap-4">
+          <nav className="flex items-center gap-3 md:gap-4">
+            {/* Camino a la Gloria Link */}
+            <Link
+              href="/camino-a-la-gloria"
+              className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amber-400/20 to-amber-500/20 hover:from-amber-400/30 hover:to-amber-500/30 border border-amber-400/30 text-amber-400 px-3 md:px-4 py-2 rounded-full transition-all duration-300 text-sm font-semibold"
+            >
+              <Trophy className="w-4 h-4" />
+              <span className="hidden md:inline">Camino a la Gloria</span>
+            </Link>
+
             {/* Current Fecha Badge (visible on larger screens) */}
             {selectedDate !== "fecha" && (
-              <div className="hidden md:flex items-center gap-2 bg-amber-400/20 text-amber-400 px-4 py-2 rounded-full">
-                <Trophy className="w-4 h-4" />
+              <div className="hidden lg:flex items-center gap-2 bg-white/10 text-white/80 px-4 py-2 rounded-full">
+                <Calendar className="w-4 h-4 text-amber-400" />
                 <span className="font-semibold text-sm">
                   {getFechaLabel(selectedDate)}
                 </span>

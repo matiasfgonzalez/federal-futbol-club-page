@@ -20,6 +20,12 @@ const milestones = [
     description: "Consolidación como uno de los equipos más respetados.",
     icon: Users,
   },
+  {
+    year: "2025",
+    title: "¡Campeones Clausura!",
+    description: "Conquistan el Clausura UNER 2025. ¡Bicampeones históricos!",
+    icon: Trophy,
+  },
 ];
 
 const SectionHistoryTeam = () => {
@@ -80,7 +86,11 @@ const SectionHistoryTeam = () => {
               <p className="text-white/80 leading-relaxed">
                 Desde entonces, El Federal Futbol Club ha mantenido su lugar en
                 la categoría A, consolidándose como uno de los equipos más
-                reconocidos y respetados del torneo de UNER.
+                reconocidos y respetados del torneo de UNER.{" "}
+                <span className="text-amber-400 font-semibold">
+                  En 2025, coronaron su historia conquistando el Clausura UNER,
+                  convirtiéndose en bicampeones del torneo universitario.
+                </span>
               </p>
             </div>
 
@@ -137,8 +147,13 @@ const SectionHistoryTeam = () => {
                   </div>
                   <div className="w-px h-10 bg-white/20"></div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-amber-400">7+</p>
+                    <p className="text-2xl font-bold text-amber-400">8</p>
                     <p className="text-xs text-white/70">Años</p>
+                  </div>
+                  <div className="w-px h-10 bg-white/20"></div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-amber-400">2🏆</p>
+                    <p className="text-xs text-white/70">Títulos</p>
                   </div>
                 </div>
               </div>

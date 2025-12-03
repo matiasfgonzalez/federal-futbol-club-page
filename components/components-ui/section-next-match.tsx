@@ -13,13 +13,15 @@ import {
 import Link from "next/link";
 
 const nextMatch = {
-  opponent: "Montecarlo",
-  date: "28 de Septiembre, 2024",
-  time: "14:00 hs",
+  opponent: "Ortópteros",
+  date: "29 de Noviembre, 2025",
+  time: "10:40 hs",
   venue: "Cancha de UNER - Oro Verde",
-  opponentLogo: "/img/escudos/montecarlo.webp",
+  opponentLogo: "/img/escudos/ortopteros.webp",
   result: "1 - 0",
   isFinished: true,
+  isFinal: true,
+  tournament: "Clausura UNER 2025",
 };
 
 const SectionNextMatch = () => {
@@ -39,14 +41,18 @@ const SectionNextMatch = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 bg-[#1b2f62]/10 text-[#1b2f62] font-medium px-4 py-2 rounded-full text-sm mb-4">
+          <span className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400/20 to-amber-500/20 border border-amber-400/30 text-amber-600 font-semibold px-4 py-2 rounded-full text-sm mb-4">
             <Trophy className="w-4 h-4" />
-            Último Partido
+            🏆 FINAL - Clausura UNER 2025
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
-            Resultado del Partido
+            ¡<span className="text-amber-500">CAMPEONES</span>!
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#2348a7] to-amber-400 mx-auto rounded-full"></div>
+          <p className="text-gray-600 max-w-lg mx-auto mb-4">
+            La gran final que coronó a Federal FC como campeón del Clausura UNER
+            2025
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Match Card */}
@@ -93,8 +99,8 @@ const SectionNextMatch = () => {
               {/* Score */}
               <div className="flex flex-col items-center px-4 md:px-8">
                 {nextMatch.isFinished && (
-                  <span className="text-xs font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-full mb-3">
-                    FINALIZADO
+                  <span className="text-xs font-bold text-amber-700 bg-gradient-to-r from-amber-100 to-amber-200 px-4 py-1.5 rounded-full mb-3 shadow-sm border border-amber-300">
+                    🏆 CAMPEONES
                   </span>
                 )}
                 <div className="flex items-center gap-3 md:gap-4">
@@ -108,8 +114,8 @@ const SectionNextMatch = () => {
                     0
                   </span>
                 </div>
-                <span className="text-xs text-gray-400 mt-2 uppercase tracking-wider">
-                  Resultado Final
+                <span className="text-xs text-amber-600 font-semibold mt-2 uppercase tracking-wider">
+                  ⭐ Gran Final
                 </span>
               </div>
 

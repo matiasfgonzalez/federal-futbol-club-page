@@ -4,8 +4,9 @@ import { ArrowRight, Trophy, Users, Calendar } from "lucide-react";
 import Link from "next/link";
 
 const stats = [
-  { icon: Trophy, label: "Campeón 2017", value: "Cat. B" },
-  { icon: Users, label: "Fundado por", value: "Amigos" },
+  { icon: Users, label: "Amigos", value: "Fundado por" },
+  { icon: Trophy, label: "Cat. B", value: "Campeón 2017" },
+  { icon: Trophy, label: "Cat. A", value: "Campeón 2025" },
   { icon: Calendar, label: "Desde", value: "2017" },
 ];
 

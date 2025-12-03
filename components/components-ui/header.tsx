@@ -11,21 +11,46 @@ const navItems = [
   { href: "#history", label: "Historia" },
   { href: "#players", label: "Jugadores" },
   { href: "#trophies", label: "Campeonatos" },
-  { href: "#sponsors", label: "Patrocinadores" },
+  {
+    href: "/camino-a-la-gloria",
+    label: "🏆 Camino a la Gloria",
+    isSpecial: true,
+  },
 ];
 
 const NavLinks = ({ onClick }: { onClick?: () => void }) => (
   <>
     {navItems.map((item) => (
       <li key={item.href}>
-        <a
-          href={item.href}
-          onClick={onClick}
-          className="relative text-white/90 hover:text-white font-medium transition-all duration-300 py-2 px-1 group"
-        >
-          {item.label}
-          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
-        </a>
+        {item.href.startsWith("/") ? (
+          <Link
+            href={item.href}
+            onClick={onClick}
+            className={`relative font-medium transition-all duration-300 py-2 px-1 group ${
+              item.isSpecial
+                ? "text-amber-400 hover:text-amber-300"
+                : "text-white/90 hover:text-white"
+            }`}
+          >
+            {item.label}
+            <span
+              className={`absolute bottom-0 left-0 w-0 h-0.5 ${
+                item.isSpecial
+                  ? "bg-gradient-to-r from-amber-300 to-amber-400"
+                  : "bg-gradient-to-r from-amber-400 to-amber-500"
+              } group-hover:w-full transition-all duration-300 rounded-full`}
+            ></span>
+          </Link>
+        ) : (
+          <a
+            href={item.href}
+            onClick={onClick}
+            className="relative text-white/90 hover:text-white font-medium transition-all duration-300 py-2 px-1 group"
+          >
+            {item.label}
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
+          </a>
+        )}
       </li>
     ))}
   </>
@@ -149,14 +174,35 @@ const HeaderComponent = () => {
                   <ul className="flex flex-col space-y-2">
                     {navItems.map((item) => (
                       <li key={item.href}>
-                        <a
-                          href={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-3 text-white/80 hover:text-white hover:bg-white/5 font-medium py-3 px-4 rounded-xl transition-all duration-300 group"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50 group-hover:bg-amber-400 transition-colors"></span>
-                          {item.label}
-                        </a>
+                        {item.href.startsWith("/") ? (
+                          <Link
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`flex items-center gap-3 font-medium py-3 px-4 rounded-xl transition-all duration-300 group ${
+                              item.isSpecial
+                                ? "text-amber-400 hover:text-amber-300 bg-amber-400/10 hover:bg-amber-400/20"
+                                : "text-white/80 hover:text-white hover:bg-white/5"
+                            }`}
+                          >
+                            <span
+                              className={`w-1.5 h-1.5 rounded-full ${
+                                item.isSpecial
+                                  ? "bg-amber-400"
+                                  : "bg-amber-400/50 group-hover:bg-amber-400"
+                              } transition-colors`}
+                            ></span>
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <a
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 text-white/80 hover:text-white hover:bg-white/5 font-medium py-3 px-4 rounded-xl transition-all duration-300 group"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400/50 group-hover:bg-amber-400 transition-colors"></span>
+                            {item.label}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

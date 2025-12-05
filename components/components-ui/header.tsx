@@ -12,6 +12,11 @@ const navItems = [
   { href: "#players", label: "Jugadores" },
   { href: "#trophies", label: "Campeonatos" },
   {
+    href: "/plantel",
+    label: "⚽ Plantel",
+    isSpecial: false,
+  },
+  {
     href: "/camino-a-la-gloria",
     label: "🏆 Camino a la Gloria",
     isSpecial: true,

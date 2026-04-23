@@ -1,36 +1,54 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import {
   Calendar,
   MapPin,
   Clock,
   ChevronRight,
-  FileText,
   Trophy,
+  Zap,
+  AlertTriangle,
 } from "lucide-react";
 import Link from "next/link";
-
-const nextMatch = {
-  opponent: "Ortópteros",
-  date: "29 de Noviembre, 2025",
-  time: "10:40 hs",
-  venue: "Cancha de UNER - Oro Verde",
-  opponentLogo: "/img/escudos/ortopteros.webp",
-  result: "1 - 0",
-  isFinished: true,
-  isFinal: true,
-  tournament: "Clausura UNER 2025",
-};
+import {
+  getProximoPartido,
+  getUltimoResultado,
+  getTorneoActivo,
+} from "@/data/torneos";
 
 const SectionNextMatch = () => {
+  const proximoData = getProximoPartido();
+  const ultimoData = getUltimoResultado();
+  const torneoActivo = getTorneoActivo();
+
+  // Determinar qué mostrar: próximo partido o último resultado
+  const data = proximoData || ultimoData;
+
+  if (!data) return null;
+
+  const { partido, torneo } = data;
+  const isProximo = partido.estado === "PROGRAMADO";
+  const isPostergado = partido.estado === "POSTERGADO";
+  const isCompletado = partido.estado === "COMPLETADO";
+
+  // Determinar si Federal ganó (para partidos completados)
+  const federalGano =
+    isCompletado &&
+    partido.golesLocal !== null &&
+    partido.golesVisitante !== null &&
+    partido.golesLocal > partido.golesVisitante;
+
+  // Formatear la fecha para mostrar
+  const formatFecha = (fechaStr: string) => {
+    const fecha = new Date(fechaStr + "T12:00:00");
+    const opciones: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    };
+    return fecha.toLocaleDateString("es-AR", opciones);
+  };
+
   return (
     <section
       id="next-match"
@@ -47,38 +65,91 @@ const SectionNextMatch = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400/20 to-amber-500/20 border border-amber-400/30 text-amber-600 font-semibold px-4 py-2 rounded-full text-sm mb-4">
-            <Trophy className="w-4 h-4" />
-            🏆 FINAL - Clausura UNER 2025
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
-            ¡<span className="text-amber-500">CAMPEONES</span>!
-          </h2>
-          <p className="text-gray-600 max-w-lg mx-auto mb-4">
-            La gran final que coronó a Federal FC como campeón del Clausura UNER
-            2025
-          </p>
+          {isProximo && (
+            <>
+              <span className="inline-flex items-center gap-2 bg-[#1b2f62]/10 border border-[#1b2f62]/20 text-[#1b2f62] font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                <Zap className="w-4 h-4 text-amber-500" />
+                {torneo.nombre}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
+                Próximo{" "}
+                <span className="bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
+                  Partido
+                </span>
+              </h2>
+              <p className="text-gray-600 max-w-lg mx-auto mb-4">
+                {partido.destacado || `${torneo.nombre} - ${partido.fecha}`}
+              </p>
+            </>
+          )}
+
+          {isPostergado && (
+            <>
+              <span className="inline-flex items-center gap-2 bg-orange-100 border border-orange-300 text-orange-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                <AlertTriangle className="w-4 h-4" />
+                PARTIDO POSTERGADO
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
+                Partido{" "}
+                <span className="text-orange-500">Postergado</span>
+              </h2>
+              <p className="text-gray-600 max-w-lg mx-auto mb-4">
+                El partido fue postergado. Se informará la nueva fecha.
+              </p>
+            </>
+          )}
+
+          {isCompletado && (
+            <>
+              <span className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400/20 to-amber-500/20 border border-amber-400/30 text-amber-600 font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                <Trophy className="w-4 h-4" />
+                {torneo.nombre} - {partido.fecha}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
+                {federalGano ? (
+                  <>
+                    ¡<span className="text-amber-500">Victoria</span>!
+                  </>
+                ) : (
+                  <>
+                    Último{" "}
+                    <span className="text-amber-500">Resultado</span>
+                  </>
+                )}
+              </h2>
+              <p className="text-gray-600 max-w-lg mx-auto mb-4">
+                {partido.destacado || `${partido.fecha} del ${torneo.nombre}`}
+              </p>
+            </>
+          )}
+
           <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Match Card */}
         <Card className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl shadow-[#1b2f62]/10 overflow-hidden border-0">
           {/* Card Header */}
-          <div className="bg-gradient-to-r from-[#1b2f62] via-[#2348a7] to-[#1b2f62] p-4 text-white">
+          <div
+            className={`p-4 text-white ${
+              isPostergado
+                ? "bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500"
+                : "bg-gradient-to-r from-[#1b2f62] via-[#2348a7] to-[#1b2f62]"
+            }`}
+          >
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm md:text-base">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-amber-400" />
-                <span>{nextMatch.date}</span>
+                <span>{formatFecha(partido.fechaPartido)}</span>
               </div>
               <div className="hidden sm:block w-1 h-1 bg-white/50 rounded-full"></div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400" />
-                <span>{nextMatch.time}</span>
+                <span>{partido.hora} hs</span>
               </div>
               <div className="hidden sm:block w-1 h-1 bg-white/50 rounded-full"></div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-amber-400" />
-                <span>{nextMatch.venue}</span>
+                <span>{partido.sede}</span>
               </div>
             </div>
           </div>
@@ -91,38 +162,70 @@ const SectionNextMatch = () => {
                 <div className="relative inline-block mb-4">
                   <div className="absolute inset-0 bg-[#2348a7]/10 rounded-full blur-xl scale-150"></div>
                   <img
-                    src="/img/escudo-federal-futbol-club-sin-fondo.webp"
-                    alt="Federal Futbol Club"
+                    src={partido.escudoLocal}
+                    alt={partido.equipoLocal}
                     className="relative w-20 h-20 md:w-28 md:h-28 object-contain mx-auto transition-transform hover:scale-110 duration-300"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-[#1b2f62]">
-                  Federal FC
+                  {partido.equipoLocal}
                 </h3>
                 <p className="text-sm text-gray-500">Local</p>
               </div>
 
-              {/* Score */}
+              {/* Score / VS */}
               <div className="flex flex-col items-center px-4 md:px-8">
-                {nextMatch.isFinished && (
-                  <span className="text-xs font-bold text-amber-700 bg-gradient-to-r from-amber-100 to-amber-200 px-4 py-1.5 rounded-full mb-3 shadow-sm border border-amber-300">
-                    🏆 CAMPEONES
-                  </span>
+                {isCompletado &&
+                  partido.golesLocal !== null &&
+                  partido.golesVisitante !== null && (
+                    <>
+                      {federalGano && (
+                        <span className="text-xs font-bold text-green-700 bg-green-100 px-4 py-1.5 rounded-full mb-3 shadow-sm border border-green-300">
+                          ✅ VICTORIA
+                        </span>
+                      )}
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <span className="text-4xl md:text-6xl font-black text-[#1b2f62]">
+                          {partido.golesLocal}
+                        </span>
+                        <span className="text-2xl md:text-3xl font-bold text-gray-300">
+                          -
+                        </span>
+                        <span className="text-4xl md:text-6xl font-black text-gray-400">
+                          {partido.golesVisitante}
+                        </span>
+                      </div>
+                      <span className="text-xs text-gray-500 font-semibold mt-2 uppercase tracking-wider">
+                        Final
+                      </span>
+                    </>
+                  )}
+
+                {isProximo && (
+                  <>
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <span className="text-3xl md:text-5xl font-black bg-gradient-to-b from-[#1b2f62] to-[#2348a7] bg-clip-text text-transparent">
+                        VS
+                      </span>
+                    </div>
+                    <span className="text-xs text-amber-600 font-semibold mt-3 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                      ⚽ {partido.fecha}
+                    </span>
+                  </>
                 )}
-                <div className="flex items-center gap-3 md:gap-4">
-                  <span className="text-4xl md:text-6xl font-black text-[#1b2f62]">
-                    1
-                  </span>
-                  <span className="text-2xl md:text-3xl font-bold text-gray-300">
-                    -
-                  </span>
-                  <span className="text-4xl md:text-6xl font-black text-gray-400">
-                    0
-                  </span>
-                </div>
-                <span className="text-xs text-amber-600 font-semibold mt-2 uppercase tracking-wider">
-                  ⭐ Gran Final
-                </span>
+
+                {isPostergado && (
+                  <>
+                    <span className="text-xs font-bold text-orange-700 bg-orange-100 px-4 py-1.5 rounded-full mb-3 shadow-sm border border-orange-300">
+                      ⚠️ POSTERGADO
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl md:text-4xl font-black text-gray-300">
+                        VS
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Away Team */}
@@ -130,13 +233,13 @@ const SectionNextMatch = () => {
                 <div className="relative inline-block mb-4">
                   <div className="absolute inset-0 bg-gray-200 rounded-full blur-xl scale-150"></div>
                   <img
-                    src={nextMatch.opponentLogo}
-                    alt={nextMatch.opponent}
+                    src={partido.escudoVisitante}
+                    alt={partido.equipoVisitante}
                     className="relative w-20 h-20 md:w-28 md:h-28 object-contain mx-auto transition-transform hover:scale-110 duration-300"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-700">
-                  {nextMatch.opponent}
+                  {partido.equipoVisitante}
                 </h3>
                 <p className="text-sm text-gray-500">Visitante</p>
               </div>
@@ -146,41 +249,17 @@ const SectionNextMatch = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="group bg-gradient-to-r from-[#1b2f62] to-[#2348a7] hover:from-[#2348a7] hover:to-[#1b2f62] text-white font-semibold px-8 py-6 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-[#1b2f62]/30 hover:-translate-y-1 border border-white/10">
-                <FileText className="w-5 h-5 mr-3" />
-                Ver Listado de Buena Fe
-                <ChevronRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 overflow-hidden rounded-3xl border-0 bg-gradient-to-b from-[#1b2f62] to-[#152347] shadow-2xl">
-              {/* Dialog Header */}
-              <div className="bg-gradient-to-r from-[#1b2f62] via-[#2348a7] to-[#1b2f62] p-6 text-center border-b border-white/10">
-                <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-sm border border-amber-400/30 text-amber-400 font-semibold px-4 py-2 rounded-full text-sm mb-3">
-                  <FileText className="w-4 h-4" />
-                  Documento Oficial
-                </div>
-                <DialogTitle className="text-2xl md:text-3xl font-bold text-white">
-                  Listado de <span className="text-amber-400">Buena Fe</span>
-                </DialogTitle>
-                <DialogDescription className="text-white/60 text-sm mt-2">
-                  Federal Futbol Club - Clausura UNER 2025
-                </DialogDescription>
-              </div>
-
-              {/* Dialog Content */}
-              <div className="overflow-auto max-h-[calc(90vh-120px)] w-full bg-white/5 p-4">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/img/lista-buena-fe.webp"
-                    alt="Listado de Buena Fe - Federal FC"
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
+          {/* Link to Tournament Page */}
+          {torneoActivo && (
+            <Link
+              href={`/torneo/${torneoActivo.id}`}
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#1b2f62] to-[#2348a7] hover:from-[#2348a7] hover:to-[#1b2f62] text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-[#1b2f62]/30 hover:-translate-y-1 border border-white/10"
+            >
+              <Trophy className="w-5 h-5" />
+              Ver Torneo Completo
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          )}
 
           {/* Link to Camino a la Gloria */}
           <Link

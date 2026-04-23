@@ -12,8 +12,13 @@ const navItems = [
   { href: "#players", label: "Jugadores" },
   { href: "#trophies", label: "Campeonatos" },
   {
+    href: "/torneo/apertura-uner-2026",
+    label: "⚽ Torneo",
+    isSpecial: false,
+  },
+  {
     href: "/plantel",
-    label: "⚽ Plantel",
+    label: "📋 Plantel",
     isSpecial: false,
   },
   {

@@ -1,0 +1,162 @@
+{
+  "id": "apertura-uner-2026",
+  "nombre": "Apertura UNER 2026",
+  "temporada": "2026",
+  "sede": "Cancha Facultad de Ciencias Agropecuarias",
+  "estado": "EN_CURSO",
+  "fechaInicio": "2026-04-23",
+  "escudoFederal": "/img/escudo-federal-futbol-club-sin-fondo.webp",
+  "listaBuenaFe": "/img/lista-buena-fe.webp",
+  "categoriaFederal": "A",
+  "categorias": [
+    {
+      "nombre": "Categoría A",
+      "id": "A",
+      "equipos": [
+        "Federal FC",
+        "Deportivo Litoral",
+        "Saca Clavo",
+        "Skabyos",
+        "Evasores",
+        "Interior",
+        "Jagger",
+        "Ortópteros"
+      ]
+    },
+    {
+      "nombre": "Categoría B",
+      "id": "B",
+      "equipos": [
+        "Antipala",
+        "La Vino Tinto",
+        "Infernales",
+        "Cachilas",
+        "Licenciados sin Fútbol",
+        "Ancho Falso"
+      ]
+    }
+  ],
+  "partidos": [
+    {
+      "id": 1,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-23",
+      "hora": "19:30",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "A",
+      "equipoLocal": "Federal FC",
+      "escudoLocal": "/img/escudo-federal-futbol-club-sin-fondo.webp",
+      "equipoVisitante": "Deportivo Litoral",
+      "escudoVisitante": "/img/escudos/deportivo-litoral.png",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": "Debut en el Apertura 2026"
+    }
+  ],
+  "otrosPartidos": [
+    {
+      "id": 201,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-24",
+      "hora": "19:30",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "A",
+      "equipoLocal": "Saca Clavo",
+      "escudoLocal": "/img/escudos/saca-clavo.webp",
+      "equipoVisitante": "Skabyos",
+      "escudoVisitante": "/img/escudos/skabyos.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    },
+    {
+      "id": 202,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-25",
+      "hora": "10:00",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "A",
+      "equipoLocal": "Evasores",
+      "escudoLocal": "/img/escudos/evasores.webp",
+      "equipoVisitante": "Interior",
+      "escudoVisitante": "/img/escudos/interior.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    },
+    {
+      "id": 203,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-25",
+      "hora": "11:00",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "A",
+      "equipoLocal": "Jagger",
+      "escudoLocal": "/img/escudos/jagger.webp",
+      "equipoVisitante": "Ortópteros",
+      "escudoVisitante": "/img/escudos/ortopteros.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    },
+    {
+      "id": 301,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-23",
+      "hora": "18:30",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "B",
+      "equipoLocal": "Antipala",
+      "escudoLocal": "/img/escudos/antipala.webp",
+      "equipoVisitante": "La Vino Tinto",
+      "escudoVisitante": "/img/escudos/la-vino-tinto.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    },
+    {
+      "id": 302,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-24",
+      "hora": "18:30",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "B",
+      "equipoLocal": "Infernales",
+      "escudoLocal": "/img/escudos/infernales.webp",
+      "equipoVisitante": "Cachilas",
+      "escudoVisitante": "/img/escudos/cachilas.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    },
+    {
+      "id": 303,
+      "fecha": "Fecha 1",
+      "fechaPartido": "2026-04-25",
+      "hora": "9:00",
+      "sede": "Cancha Facultad de Ciencias Agropecuarias",
+      "instancia": "Fase de Grupos",
+      "estado": "PROGRAMADO",
+      "categoria": "B",
+      "equipoLocal": "Licenciados sin Fútbol",
+      "escudoLocal": "/img/escudos/lsf.webp",
+      "equipoVisitante": "Ancho Falso",
+      "escudoVisitante": "/img/escudos/ancho-falso.webp",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "destacado": null
+    }
+  ]
+}

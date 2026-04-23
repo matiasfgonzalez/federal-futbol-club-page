@@ -1,7 +1,13 @@
 "use client";
 import { Heart, Handshake } from "lucide-react";
+import Link from "next/link";
 
 const sponsors = [
+  {
+    name: "ADN Criminalística",
+    logo: "/img/sponsors/adnc.jpeg",
+    url: "https://adncriminalistica.com/",
+  },
   {
     name: "Campo Fértil",
     logo: "/img/sponsors/campo-fertil.jpeg",

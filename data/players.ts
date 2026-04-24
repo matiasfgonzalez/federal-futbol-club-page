@@ -32,6 +32,16 @@ export const players = [
     imgBodySinFondo: "/img/body/gonza-sin-fondo.webp",
     numero: 4,
     stats: { goles: 2, asistencias: 1, partidos: 16 },
+  },{
+    id: 4,
+    name: "Rodrigo Navarro",
+    position: "Defensor Central",
+    country: "Bovril",
+    imgFace: "/img/face/Rodrigo-Navarro.webp",
+    imgBody: "/img/body/Rodrigo-Navarro.webp",
+    imgBodySinFondo: "/img/body/Rodrigo-Navarro-SF.webp",
+    numero: 4,
+    stats: { goles: 2, asistencias: 1, partidos: 16 },
   },
 ];
 

@@ -31,10 +31,12 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
       className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      // Support for touch devices
+      onClick={() => setIsHovered(!isHovered)}
     >
       <div className="relative w-[280px] sm:w-[300px] h-[400px] cursor-pointer group">
         {/* Fondo con imagen */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#1b2f62] to-[#0f1a36] shadow-2xl shadow-[#1b2f62]/40">
+        <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#1b2f62] to-[#0f1a36] shadow-2xl shadow-[#1b2f62]/40 border border-white/5 transition-all duration-500 group-hover:border-[#d4af37]/30 group-hover:shadow-[0_0_40px_rgba(212,175,55,0.2)]">
           <motion.img
             src={player.imgBody}
             alt={player.name}
@@ -47,8 +49,8 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
           />
           {/* Overlay gradient */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-[#1b2f62] via-[#1b2f62]/40 to-transparent"
-            animate={{ opacity: isHovered ? 0.95 : 0.8 }}
+            className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/40 to-transparent"
+            animate={{ opacity: isHovered ? 0.7 : 0.4 }}
             transition={{ duration: 0.3 }}
           />
         </div>
@@ -58,7 +60,7 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
           <motion.img
             src={player.imgBodySinFondo}
             alt={player.name}
-            className="absolute bottom-0 left-1/2 w-full h-auto max-h-[110%] object-contain z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+            className="absolute bottom-0 left-1/2 w-full h-auto max-h-[110%] object-contain z-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] pointer-events-none"
             style={{
               maskImage: "linear-gradient(black 75%, transparent)",
               WebkitMaskImage: "linear-gradient(black 75%, transparent)",
@@ -76,32 +78,36 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
 
         {/* Número del jugador */}
         <motion.div
-          className="absolute top-4 right-4 z-20"
+          className="absolute top-4 right-4 z-20 pointer-events-none"
           animate={{
-            scale: isHovered ? 1.1 : 1,
-            rotate: isHovered ? -5 : 0,
+            opacity: isHovered ? 0 : 1,
+            scale: isHovered ? 0.8 : 1,
+            y: isHovered ? -10 : 0,
           }}
           transition={{ duration: 0.3 }}
         >
-          <div className="bg-gradient-to-br from-[#d4af37] to-[#b8960c] text-[#1b2f62] w-14 h-14 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg">
+          <div className="bg-gradient-to-br from-[#d4af37] to-[#b8960c] text-[#1b2f62] w-14 h-14 rounded-2xl flex items-center justify-center font-black text-2xl shadow-[0_8px_16px_rgba(0,0,0,0.4)] border border-[#f4d58d]/50">
             {player.numero}
           </div>
         </motion.div>
 
         {/* Badge de posición */}
         <motion.div
-          className="absolute top-4 left-4 z-20"
-          animate={{ x: isHovered ? 5 : 0 }}
+          className="absolute top-4 left-4 z-20 pointer-events-none"
+          animate={{ 
+            opacity: isHovered ? 0 : 1,
+            x: isHovered ? -10 : 0 
+          }}
           transition={{ duration: 0.3 }}
         >
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full text-xs font-medium">
+          <div className="bg-black/40 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
             {player.position}
           </div>
         </motion.div>
 
         {/* Nombre del jugador - aparece en hover */}
         <motion.div
-          className="absolute bottom-4 left-0 right-0 z-20 px-4"
+          className="absolute bottom-4 left-0 right-0 z-20 px-4 pointer-events-none"
           initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: isHovered ? 1 : 0,
@@ -109,32 +115,34 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
           }}
           transition={{ duration: 0.3, delay: isHovered ? 0.1 : 0 }}
         >
-          <div className="bg-gradient-to-r from-[#2348a7] to-[#1b2f62] backdrop-blur-sm rounded-xl p-4 border border-white/10 shadow-xl">
-            <h3 className="text-white font-bold text-xl mb-1">{player.name}</h3>
-            <div className="flex items-center gap-2 text-white/70 text-sm">
-              <MapPin className="w-3.5 h-3.5" />
+          <div className="bg-[#0a1628]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <h3 className="text-white font-black text-2xl tracking-tight mb-1">{player.name}</h3>
+            <div className="flex items-center gap-2 text-[#d4af37] text-sm font-medium mb-3">
+              <MapPin className="w-4 h-4" />
               <span>{player.country}</span>
             </div>
 
             {/* Mini stats */}
-            <div className="flex gap-4 mt-3 pt-3 border-t border-white/10">
-              <div className="text-center">
-                <span className="text-[#d4af37] font-bold text-lg">
+            <div className="flex justify-between items-center bg-white/5 rounded-xl p-3 border border-white/5">
+              <div className="text-center flex-1">
+                <span className="text-white font-bold text-xl block leading-none mb-1">
                   {player.stats.goles}
                 </span>
-                <p className="text-white/50 text-xs">Goles</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-wider font-bold">Goles</p>
               </div>
-              <div className="text-center">
-                <span className="text-[#d4af37] font-bold text-lg">
+              <div className="w-px h-8 bg-white/10 mx-2" />
+              <div className="text-center flex-1">
+                <span className="text-white font-bold text-xl block leading-none mb-1">
                   {player.stats.asistencias}
                 </span>
-                <p className="text-white/50 text-xs">Asist.</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-wider font-bold">Asist.</p>
               </div>
-              <div className="text-center">
-                <span className="text-[#d4af37] font-bold text-lg">
+              <div className="w-px h-8 bg-white/10 mx-2" />
+              <div className="text-center flex-1">
+                <span className="text-[#d4af37] font-bold text-xl block leading-none mb-1">
                   {player.stats.partidos}
                 </span>
-                <p className="text-white/50 text-xs">PJ</p>
+                <p className="text-[#d4af37]/60 text-[10px] uppercase tracking-wider font-bold">PJ</p>
               </div>
             </div>
           </div>
@@ -142,12 +150,12 @@ const PlayerCard3D = ({ player, index }: { player: Player; index: number }) => {
 
         {/* Indicador de hover - solo visible sin hover */}
         <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
-          animate={{ opacity: isHovered ? 0 : 1 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+          animate={{ opacity: isHovered ? 0 : 1, y: isHovered ? 10 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="bg-black/30 backdrop-blur-sm text-white/60 px-3 py-1 rounded-full text-xs flex items-center gap-1">
-            <span>Hover para ver más</span>
+          <div className="bg-black/40 backdrop-blur-md text-white/80 px-4 py-2 rounded-full text-xs font-medium flex items-center gap-2 border border-white/10 shadow-lg whitespace-nowrap">
+            <span>Toca para ver más</span>
           </div>
         </motion.div>
       </div>

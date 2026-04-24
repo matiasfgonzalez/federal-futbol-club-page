@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getTorneoPorSlug } from "@/data/torneos";
-import { IPartidoTorneo } from "@/interfaces/inteface";
+import { IPartidoTorneo, ITeam } from "@/interfaces/inteface";
 import {
   Dialog,
   DialogContent,
@@ -59,6 +59,129 @@ const getResultColor = (partido: IPartidoTorneo) => {
 const formatFecha = (fechaStr: string) => {
   const fecha = new Date(fechaStr + "T12:00:00");
   return fecha.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
+};
+
+interface StandingData extends ITeam {
+  goalDifference: number;
+}
+
+const calculateStandings = (partidos: IPartidoTorneo[], categoryId: string, allTeams: string[]) => {
+  const standings: Record<string, StandingData> = {};
+
+  allTeams.forEach(team => {
+    standings[team] = {
+      team,
+      teamLogo: "",
+      played: 0,
+      won: 0,
+      drawn: 0,
+      lost: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+      points: 0,
+      goalDifference: 0
+    };
+  });
+
+  const categoryMatches = partidos.filter(p => (p.categoria || "A") === categoryId);
+
+  categoryMatches.forEach(p => {
+    if (standings[p.equipoLocal] && p.escudoLocal) standings[p.equipoLocal].teamLogo = p.escudoLocal;
+    if (standings[p.equipoVisitante] && p.escudoVisitante) standings[p.equipoVisitante].teamLogo = p.escudoVisitante;
+
+    if (p.estado === "COMPLETADO" && p.golesLocal !== null && p.golesVisitante !== null) {
+      if (!standings[p.equipoLocal] || !standings[p.equipoVisitante]) return;
+
+      standings[p.equipoLocal].played++;
+      standings[p.equipoVisitante].played++;
+
+      standings[p.equipoLocal].goalsFor += p.golesLocal;
+      standings[p.equipoLocal].goalsAgainst += p.golesVisitante;
+      
+      standings[p.equipoVisitante].goalsFor += p.golesVisitante;
+      standings[p.equipoVisitante].goalsAgainst += p.golesLocal;
+
+      if (p.golesLocal > p.golesVisitante) {
+        standings[p.equipoLocal].won++;
+        standings[p.equipoLocal].points += 3;
+        standings[p.equipoVisitante].lost++;
+      } else if (p.golesLocal < p.golesVisitante) {
+        standings[p.equipoVisitante].won++;
+        standings[p.equipoVisitante].points += 3;
+        standings[p.equipoLocal].lost++;
+      } else {
+        standings[p.equipoLocal].drawn++;
+        standings[p.equipoLocal].points += 1;
+        standings[p.equipoVisitante].drawn++;
+        standings[p.equipoVisitante].points += 1;
+      }
+    }
+  });
+
+  Object.values(standings).forEach(s => {
+    s.goalDifference = s.goalsFor - s.goalsAgainst;
+  });
+
+  return Object.values(standings).sort((a, b) => {
+    if (a.points !== b.points) return b.points - a.points;
+    if (a.goalDifference !== b.goalDifference) return b.goalDifference - a.goalDifference;
+    if (a.goalsFor !== b.goalsFor) return b.goalsFor - a.goalsFor;
+    return a.team.localeCompare(b.team);
+  });
+};
+
+const TablaPosiciones = ({ categoria, standings }: { categoria: string, standings: StandingData[] }) => {
+  return (
+    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden mb-8">
+      <div className="bg-[#1b2f62] p-4 border-b border-white/10 flex items-center justify-between">
+        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+          <Trophy className="w-5 h-5 text-amber-400" />
+          Tabla de Posiciones - {categoria}
+        </h3>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-left text-sm text-white/80">
+          <thead className="bg-white/5 text-xs uppercase text-white/60">
+            <tr>
+              <th className="px-4 py-3 w-12 text-center">Pos</th>
+              <th className="px-4 py-3">Equipo</th>
+              <th className="px-2 py-3 text-center">PTS</th>
+              <th className="px-2 py-3 text-center">PJ</th>
+              <th className="px-2 py-3 text-center hidden sm:table-cell">PG</th>
+              <th className="px-2 py-3 text-center hidden sm:table-cell">PE</th>
+              <th className="px-2 py-3 text-center hidden sm:table-cell">PP</th>
+              <th className="px-2 py-3 text-center hidden md:table-cell">GF</th>
+              <th className="px-2 py-3 text-center hidden md:table-cell">GC</th>
+              <th className="px-2 py-3 text-center">DIF</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/5">
+            {standings.map((team, index) => (
+              <tr key={team.team} className="hover:bg-white/5 transition-colors">
+                <td className="px-4 py-3 font-bold text-center">
+                  <span className={`flex items-center justify-center w-6 h-6 rounded-full mx-auto ${index < 4 ? 'bg-amber-400/20 text-amber-400' : 'bg-white/10 text-white/50'}`}>
+                    {index + 1}
+                  </span>
+                </td>
+                <td className="px-4 py-3 font-semibold flex items-center gap-3">
+                  {team.teamLogo && <img src={team.teamLogo} alt={team.team} className="w-6 h-6 md:w-8 md:h-8 object-contain" />}
+                  <span className={team.team.includes("Federal") ? "text-amber-400" : ""}>{team.team}</span>
+                </td>
+                <td className="px-2 py-3 text-center font-black text-amber-400">{team.points}</td>
+                <td className="px-2 py-3 text-center font-medium">{team.played}</td>
+                <td className="px-2 py-3 text-center hidden sm:table-cell text-green-400/80">{team.won}</td>
+                <td className="px-2 py-3 text-center hidden sm:table-cell text-gray-400">{team.drawn}</td>
+                <td className="px-2 py-3 text-center hidden sm:table-cell text-red-400/80">{team.lost}</td>
+                <td className="px-2 py-3 text-center hidden md:table-cell">{team.goalsFor}</td>
+                <td className="px-2 py-3 text-center hidden md:table-cell">{team.goalsAgainst}</td>
+                <td className="px-2 py-3 text-center font-medium">{team.goalDifference > 0 ? `+${team.goalDifference}` : team.goalDifference}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 const PartidoCard = ({ partido, isFederal }: { partido: IPartidoTorneo; isFederal: boolean }) => {
@@ -158,6 +281,8 @@ export default function TorneoPage() {
     if (!fechasOtros[p.fecha]) fechasOtros[p.fecha] = [];
     fechasOtros[p.fecha].push(p);
   });
+
+  const todosLosPartidos = [...torneo.partidos, ...(torneo.otrosPartidos || [])];
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#1b2f62] via-[#152347] to-[#0d1a33]">
@@ -297,6 +422,34 @@ export default function TorneoPage() {
                 </motion.div>
               ))}
             </div>
+            
+            {/* Tablas de Posiciones */}
+            <div className="mt-12 max-w-5xl mx-auto">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
+                <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 font-medium px-4 py-2 rounded-full text-sm mb-4">
+                  <Trophy className="w-4 h-4 text-amber-400" />
+                  Clasificación
+                </span>
+                <h2 className="text-3xl font-bold text-white mb-4">
+                  Tablas de <span className="text-amber-400">Posiciones</span>
+                </h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto rounded-full" />
+              </motion.div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {torneo.categorias.map((cat) => {
+                  const standings = calculateStandings(todosLosPartidos, cat.id, cat.equipos);
+                  if (standings.length === 0) return null;
+                  
+                  return (
+                    <motion.div key={`table-${cat.id}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                      <TablaPosiciones categoria={cat.nombre} standings={standings} />
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </section>
       )}

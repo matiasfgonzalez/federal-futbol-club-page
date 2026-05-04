@@ -1,14 +1,30 @@
-"use client";
-import { Sparkles, ExternalLink, Star } from "lucide-react";
+'use client';
+import { Sparkles, ExternalLink, Star } from 'lucide-react';
 
 const newSponsors = [
   {
-    name: "ADN Criminalística",
-    logo: "/img/sponsors/adnc.jpeg",
+    name: 'ADN Criminalística',
+    logo: '/img/sponsors/adnc.jpeg',
     description:
-      "Laboratorio de criminalística y ciencias forenses de excelencia.",
-    url: "https://adncriminalistica.com/",
-    category: "Ciencia & Tecnología",
+      'Laboratorio de criminalística y ciencias forenses de excelencia.',
+    url: 'https://adncriminalistica.com/',
+    category: 'Ciencia & Tecnología',
+  },
+  {
+    name: 'Botines Goleadores',
+    logo: '/img/sponsors/botines-goleadores.jpeg',
+    description:
+      'Marca líder en calzado deportivo, especializada en botines de fútbol.',
+    url: 'https://www.instagram.com/botines.goleadores',
+    category: 'Equipamiento Deportivo',
+  },
+  {
+    name: 'El refugio de rodica',
+    logo: '/img/sponsors/el-refugio-de-rodica.jpeg',
+    description:
+      'Delicias caseras para llevar, con el sabor de la comida de mamá. Viandas, guisos y postres que reconfortan el alma.',
+    url: 'https://www.instagram.com/elrefugioderodica.buffet',
+    category: 'Buffet y Viandas',
   },
 ];
 
@@ -55,7 +71,7 @@ const SectionNewSponsors = () => {
             Nuevos Aliados
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Bienvenidos a la{" "}
+            Bienvenidos a la{' '}
             <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
               Familia Federal
             </span>
@@ -70,10 +86,7 @@ const SectionNewSponsors = () => {
         {/* Sponsors Featured Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {newSponsors.map((sponsor, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
+            <div key={index} className="group relative">
               {/* Card Glow Effect */}
               <div className="absolute -inset-0.5 bg-gradient-to-br from-amber-400/30 via-[#2348a7]/30 to-amber-400/30 rounded-3xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500"></div>
 
@@ -149,7 +162,7 @@ const SectionNewSponsors = () => {
           <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
             <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse-soft"></div>
             <p className="text-white/50 text-sm font-medium">
-              ¿Querés sumarte como sponsor?{" "}
+              ¿Querés sumarte como sponsor?{' '}
               <a
                 href="https://www.instagram.com/federal_futbol/"
                 target="_blank"

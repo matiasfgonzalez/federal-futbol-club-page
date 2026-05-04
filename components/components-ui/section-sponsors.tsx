@@ -1,32 +1,41 @@
-"use client";
-import { Heart, Handshake } from "lucide-react";
-import Link from "next/link";
+'use client';
+import { Heart, Handshake } from 'lucide-react';
 
 const sponsors = [
   {
-    name: "ADN Criminalística",
-    logo: "/img/sponsors/adnc.jpeg",
-    url: "https://adncriminalistica.com/",
+    name: 'El refugio de rodica',
+    logo: '/img/sponsors/el-refugio-de-rodica.jpeg',
+    url: 'https://www.instagram.com/elrefugioderodica.buffet',
   },
   {
-    name: "Campo Fértil",
-    logo: "/img/sponsors/campo-fertil.jpeg",
+    name: 'Botines Goleadores',
+    logo: '/img/sponsors/botines-goleadores.jpeg',
+    url: 'https://www.instagram.com/botines.goleadores',
   },
   {
-    name: "Viva la Mañana",
-    logo: "/img/sponsors/viva-la-maniana.webp",
+    name: 'ADN Criminalística',
+    logo: '/img/sponsors/adnc.jpeg',
+    url: 'https://adncriminalistica.com/',
   },
   {
-    name: "LG Pollería",
-    logo: "/img/sponsors/polleria-lg.webp",
+    name: 'Campo Fértil',
+    logo: '/img/sponsors/campo-fertil.jpeg',
   },
   {
-    name: "Vivero Oro Verde",
-    logo: "/img/sponsors/vivero-oro-verde.webp",
+    name: 'Viva la Mañana',
+    logo: '/img/sponsors/viva-la-maniana.webp',
   },
   {
-    name: "JM Deco Muebles",
-    logo: "/img/sponsors/jm-deco-muebles.webp",
+    name: 'LG Pollería',
+    logo: '/img/sponsors/polleria-lg.webp',
+  },
+  {
+    name: 'Vivero Oro Verde',
+    logo: '/img/sponsors/vivero-oro-verde.webp',
+  },
+  {
+    name: 'JM Deco Muebles',
+    logo: '/img/sponsors/jm-deco-muebles.webp',
   },
 ];
 
@@ -49,7 +58,7 @@ const SectionSponsors = () => {
             Colaboradores
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1b2f62] mb-4">
-            Nuestros{" "}
+            Nuestros{' '}
             <span className="bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
               Patrocinadores
             </span>
